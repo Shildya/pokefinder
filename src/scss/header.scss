@@ -1,5 +1,66 @@
-h1 {
-	font-size: 60px;
-	color: red;
-	font-family: "04B03";
+header {
+    position: fixed;
+    z-index: 1;
+    height: 72px;
+    width: 100%;
+    background-color: #F1F1F1;
+    border-bottom: 1px solid gray;
+
+    &.dark-mode {
+        background-color: #0e0e0e;
+        border-bottom: 1px solid rgb(72,72,72);
+    }
+}
+
+.logo-light {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 40px;
+
+    &.hidden {
+        display: none;
+    }
+}
+
+.logo-dark {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 40px;
+
+    &.hidden {
+        display: none;
+    }
+}
+
+.moon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    right: 20px;
+    cursor: pointer;
+
+    &.hidden {
+        display: none;
+    }
+}
+
+.sun {
+    display: initial;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    right: 20px;
+    cursor: pointer;
+
+    &.hidden {
+        display: none;
+    }
 }
