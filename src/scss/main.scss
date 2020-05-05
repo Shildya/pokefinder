@@ -13,6 +13,7 @@ main {
     cursor: text;
     user-select: none;
     caret-color: #0645ad;
+    border-radius: none;
 
     &.dark-mode {
         color: #dddddd;
