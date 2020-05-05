@@ -19,6 +19,11 @@ header {
     transform: translate(-50%, -50%);
     height: 40px;
 
+    @media (max-width: 450px) {
+        left: 20px;
+        transform: translate(0, -50%);
+    }
+
     &.hidden {
         display: none;
     }
@@ -30,6 +35,11 @@ header {
     top: 50%;
     transform: translate(-50%, -50%);
     height: 40px;
+
+    @media (max-width: 450px) {
+        left: 20px;
+        transform: translate(0, -50%);
+    }
 
     &.hidden {
         display: none;
