@@ -16,8 +16,11 @@
     @media (max-width: 1000px) {
         grid-template-columns: 100px 100px 120px 250px; 
     }
+    @media (max-width: 600px) {
+        grid-template-columns: 60px 100px 120px 120px; 
+    }
 
-    @media (max-width: 700px) {
+    @media (max-width: 450px) {
         grid-template-columns: 60px 100px 128px;
         grid-template-rows: 120px 48px;
     }
@@ -63,9 +66,14 @@
     color: white;
     font-size: 12px;
 
-    @media (max-width: 700px) {
+    @media (max-width: 600px) {
+        flex-direction: column;
+    }
+
+    @media (max-width: 450px) {
         position: absolute;
         transform: translate(60px, 120px);
+        flex-direction: row;
     }
 }
 
