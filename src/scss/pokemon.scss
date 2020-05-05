@@ -18,7 +18,7 @@
     }
 
     @media (max-width: 700px) {
-        grid-template-columns: 100px 100px 120px;
+        grid-template-columns: 60px 100px 128px;
         grid-template-rows: 120px 48px;
     }
 }
@@ -65,7 +65,7 @@
 
     @media (max-width: 700px) {
         position: absolute;
-        transform: translate(50%, 120px);
+        transform: translate(60px, 120px);
     }
 }
 
