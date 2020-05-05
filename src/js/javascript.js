@@ -55,6 +55,7 @@ for (i = 1; i < limit + 1; i++) {
     });
 };
 
+
 var moon = document.querySelector('.moon');
 var sun = document.querySelector('.sun');
 const body = document.querySelector('body');
@@ -62,6 +63,8 @@ const logoDark = document.querySelector('.logo-dark');
 const logoLight = document.querySelector('.logo-light');
 const header = document.querySelector('header');
 const searchBar = document.querySelector('.search-bar')
+const footer = document.querySelector('footer');
+const noResult = document.querySelector('.no-result');
 
 function darkMode() {
 
@@ -82,6 +85,7 @@ function darkMode() {
 
     header.classList.toggle('dark-mode');
     body.classList.toggle('dark-mode');
+    footer.classList.toggle('dark-mode')
 
     logoLight.classList.toggle('hidden');
     logoDark.classList.toggle('hidden');
@@ -90,20 +94,27 @@ function darkMode() {
     sun.classList.toggle('hidden');
 
     searchBar.classList.toggle('dark-mode');
+    noResult.classList.toggle('dark-mode');
 };
 
 moon.addEventListener('click', darkMode);
 sun.addEventListener('click', darkMode);
 
-
 searchBar.addEventListener('input', () => {
     document.querySelectorAll('.pokemon').forEach(pokemon => {
-        var pokemonName = pokemon.querySelector('.pokemon-name').textContent
+        var pokemonName = pokemon.querySelector('.pokemon-name').textContent;
+        var test = 0;
         if (!pokemonName.startsWith(searchBar.value.toLowerCase())) {
-            pokemon.style.display = 'none';
+            pokemon.classList.add('hidden');
         }
         else {
-            pokemon.style.display = 'grid';
+            pokemon.classList.remove('hidden');
         }
     });
+    if (document.querySelectorAll('.pokemon.hidden').length === 151) {
+        document.querySelector('.no-result').classList.remove('hidden');
+    }
+    else {
+        document.querySelector('.no-result').classList.add('hidden');
+    }
 });

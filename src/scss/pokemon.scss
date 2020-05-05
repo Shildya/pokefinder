@@ -8,9 +8,15 @@
     width: fit-content;
     margin-top: -1px;
     border: 1px solid gray;
+    background-color: white;
 
     &.dark-mode {
         border: 1px solid rgb(72, 72, 72);
+        background-color: #1d1d1d;
+    }
+
+    &.hidden {
+        display: none;
     }
 
     @media (max-width: 1000px) {

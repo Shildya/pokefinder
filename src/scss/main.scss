@@ -3,17 +3,18 @@ main {
     align-items: center;
     flex-direction: column;
     transform: translateY(100px);
+    margin-bottom: 200px;
+    min-height: calc(100vh - 229px);
 }
 
 .search-bar {
     width: 250px;
     height: 32px;
     margin-bottom: 24px;
-    padding-left: 12px;
+    padding: 0px 12px;
     cursor: text;
-    user-select: none;
     caret-color: #0645ad;
-    border-radius: none;
+    border-radius: 0;
 
     &.dark-mode {
         color: #dddddd;
@@ -21,5 +22,17 @@ main {
         border: 1px solid rgb(72,72,72);
         background-color: #1d1d1d;
         border: 1px solid rgb(72,72,72);
+    }
+}
+
+.no-result {
+    margin-top: 20px;
+
+    &.dark-mode {
+        color: white;
+    }
+
+    &.hidden {
+        display: none;
     }
 }
