@@ -18,6 +18,7 @@ for (i = 1; i < limit + 1; i++) {
 
     var pokemonName = document.createElement('a');
     pokemonName.setAttribute('class', 'pokemon-name');
+    pokemonName.href = 'infos.html';
     pokemon.appendChild(pokemonName);
 
     var pokemonTypes = document.createElement('p');
@@ -103,7 +104,6 @@ sun.addEventListener('click', darkMode);
 searchBar.addEventListener('input', () => {
     document.querySelectorAll('.pokemon').forEach(pokemon => {
         var pokemonName = pokemon.querySelector('.pokemon-name').textContent;
-        var test = 0;
         if (!pokemonName.startsWith(searchBar.value.toLowerCase())) {
             pokemon.classList.add('hidden');
         }
@@ -111,7 +111,7 @@ searchBar.addEventListener('input', () => {
             pokemon.classList.remove('hidden');
         }
     });
-    if (document.querySelectorAll('.pokemon.hidden').length === 151) {
+    if (document.querySelectorAll('.pokemon.hidden').length === limit) {
         document.querySelector('.no-result').classList.remove('hidden');
     }
     else {
