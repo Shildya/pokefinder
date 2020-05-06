@@ -41,7 +41,6 @@ for (i = 1; i < limit + 1; i++) {
         var pokemonName = document.getElementById(`${data.id}`).getElementsByClassName('pokemon-name')[0];
         var name = document.createTextNode(`${data.name}`);
         pokemonName.appendChild(name);
-        pokemonName.href = "infos.html";
 
         data.types.forEach(types => {
 
