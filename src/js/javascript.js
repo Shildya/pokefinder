@@ -18,7 +18,6 @@ for (i = 1; i < limit + 1; i++) {
 
     var pokemonName = document.createElement('a');
     pokemonName.setAttribute('class', 'pokemon-name');
-    pokemonName.href = '/infos.html';
     pokemon.appendChild(pokemonName);
 
     var pokemonTypes = document.createElement('p');
@@ -55,3 +54,7 @@ for (i = 1; i < limit + 1; i++) {
         allPokemons.push(`${data.name}`);
     });
 };
+
+document.querySelectorAll('a').forEach(a => {
+    a.href = 'infos.html';
+})
