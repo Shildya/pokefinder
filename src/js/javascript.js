@@ -16,8 +16,8 @@ for (i = 1; i < limit + 1; i++) {
     pokemon.appendChild(pokemonSprite);
 
     var pokemonName = document.createElement('a');
+    pokemonName.href = 'infos.html';
     pokemonName.setAttribute('class', 'pokemon-name');
-    pokemonName.setAttribute('onclick', 'location.href="infos.html"');
     pokemon.appendChild(pokemonName);
 
     var pokemonTypes = document.createElement('p');
@@ -39,7 +39,9 @@ for (i = 1; i < limit + 1; i++) {
         pokemonSprite.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`;
 
         var pokemonName = document.getElementById(`${data.id}`).getElementsByClassName('pokemon-name')[0];
-        pokemonName.textContent = data.name;
+        var name = document.createTextNode(`${data.name}`);
+        pokemonName.appendChild(name);
+        pokemonName.href = "infos.html";
 
         data.types.forEach(types => {
 

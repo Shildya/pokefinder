@@ -1,11 +1,14 @@
 var moon = document.querySelector('.moon');
 var sun = document.querySelector('.sun');
+
+const header = document.querySelector('header');
 const body = document.querySelector('body');
+const footer = document.querySelector('footer');
+
 const logoDark = document.querySelector('.logo-dark');
 const logoLight = document.querySelector('.logo-light');
-const header = document.querySelector('header');
+
 const searchBar = document.querySelector('.search-bar')
-const footer = document.querySelector('footer');
 const noResult = document.querySelector('.no-result');
 
 function darkMode() {
