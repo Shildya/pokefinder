@@ -1,9 +1,11 @@
 const baseURL = 'https://pokeapi.co/api/v2/';
 const limit = 151;
 
+const pokemonList = document.createDocumentFragment();
+
 for (i = 1; i < limit + 1; i++) {
      
-    var pokemon = document.createElement('div');
+    pokemon = document.createElement('div');
     pokemon.setAttribute('class', 'pokemon');
     pokemon.setAttribute('id', i);
 
@@ -24,9 +26,11 @@ for (i = 1; i < limit + 1; i++) {
     pokemonTypes.setAttribute('class', 'pokemon-types');
     pokemon.appendChild(pokemonTypes);
 
-    document.querySelector('main').appendChild(pokemon);
-
+    pokemonList.appendChild(pokemon);
 };
+
+document.querySelector('main').appendChild(pokemonList);
+
 
 for (i = 1; i < limit + 1; i++) {
 

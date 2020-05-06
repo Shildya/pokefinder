@@ -8,8 +8,10 @@ const footer = document.querySelector('footer');
 const logoDark = document.querySelector('.logo-dark');
 const logoLight = document.querySelector('.logo-light');
 
-const searchBar = document.querySelector('.search-bar')
+const searchBar = document.querySelector('.search-bar');
 const noResult = document.querySelector('.no-result');
+
+const favicon = document.querySelector('link[rel="icon"]');
 
 function darkMode() {
 
