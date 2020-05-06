@@ -11,7 +11,9 @@ const logoLight = document.querySelector('.logo-light');
 const searchBar = document.querySelector('.search-bar');
 const noResult = document.querySelector('.no-result');
 
-const favicon = document.querySelector('link[rel="icon"]');
+if (localStorage.getItem('mode') === 'night') {
+    darkMode();
+}
 
 function darkMode() {
 
@@ -40,27 +42,40 @@ function darkMode() {
     moon.classList.toggle('hidden');
     sun.classList.toggle('hidden');
 
-    searchBar.classList.toggle('dark-mode');
-    noResult.classList.toggle('dark-mode');
+    if (searchBar !== null && noResult !== null) {
+
+        searchBar.classList.toggle('dark-mode');
+        noResult.classList.toggle('dark-mode');
+    };
 };
 
-moon.addEventListener('click', darkMode);
-sun.addEventListener('click', darkMode);
+moon.addEventListener('click', () => {
+    darkMode();
+    localStorage.setItem('mode', 'night');
+});
 
-searchBar.addEventListener('input', () => {
-    document.querySelectorAll('.pokemon').forEach(pokemon => {
-        var pokemonName = pokemon.querySelector('.pokemon-name').textContent;
-        if (!pokemonName.startsWith(searchBar.value.toLowerCase())) {
-            pokemon.classList.add('hidden');
+sun.addEventListener('click', () => {
+    darkMode();
+    localStorage.setItem('mode', 'day');
+});
+
+if (searchBar !== null) {
+    
+    searchBar.addEventListener('input', () => {
+        document.querySelectorAll('.pokemon').forEach(pokemon => {
+            var pokemonName = pokemon.querySelector('.pokemon-name').textContent;
+            if (!pokemonName.startsWith(searchBar.value.toLowerCase())) {
+                pokemon.classList.add('hidden');
+            }
+            else {
+                pokemon.classList.remove('hidden');
+            }
+        });
+        if (document.querySelectorAll('.pokemon.hidden').length === limit) {
+            document.querySelector('.no-result').classList.remove('hidden');
         }
         else {
-            pokemon.classList.remove('hidden');
+            document.querySelector('.no-result').classList.add('hidden');
         }
     });
-    if (document.querySelectorAll('.pokemon.hidden').length === limit) {
-        document.querySelector('.no-result').classList.remove('hidden');
-    }
-    else {
-        document.querySelector('.no-result').classList.add('hidden');
-    }
-});
+};
