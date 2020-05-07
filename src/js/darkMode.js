@@ -15,6 +15,7 @@ const noResult = document.querySelector('.no-result');
 
 const currentPokemon = document.querySelector('.current-pokemon');
 const currentPokemonEvolution = document.querySelector('.current-pokemon-evolutions');
+const currentPokemonEntries = document.querySelector('.current-pokemon-entries');
 
 if (localStorage.getItem('mode') === 'night') {
     darkMode();
@@ -53,9 +54,10 @@ function darkMode() {
         noResult.classList.toggle('dark-mode');
     };
 
-    if (currentPokemon !== null && currentPokemonEvolution !== null) {
+    if (currentPokemon !== null && currentPokemonEvolution !== null && currentPokemonEntries !== null) {
         currentPokemon.classList.toggle('dark-mode');
         currentPokemonEvolution.classList.toggle('dark-mode');
+        currentPokemonEntries.classList.toggle('dark-mode');
     };
 };
 

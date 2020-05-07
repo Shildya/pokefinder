@@ -11,7 +11,6 @@ else {
 }
 
 function getInfos() {
-    document.querySelector('p').textContent = '#' + pokemonId;
     var url = ''.concat(baseURL, 'pokemon/', pokemonId);
     fetch(url)
     .then(result => result.json())
@@ -21,8 +20,7 @@ function getInfos() {
         var pokemonSprite = document.querySelector('.current-pokemon-artwork');
         pokemonSprite.src = `https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`;
 
-        var currentPokemonName = document.querySelector('.current-pokemon-name');
-        currentPokemonName.textContent = data.name;
+        document.querySelector('.current-pokemon-entries').textContent = '#' + pokemonId + ' ' + data.name;
 
         data.types.forEach(types => {
 

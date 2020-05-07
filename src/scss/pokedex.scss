@@ -24,13 +24,17 @@
 
 .current-pokemon-entries {
     display: flex;
-    justify-content: space-around;
-    width: 150px;
+    justify-content: center;
     align-items: center;
     margin: 0 auto;
     font-weight: bold;
     text-transform: capitalize;
     font-size: 20px;
+    margin-bottom: 16px;
+    
+    &.dark-mode {
+        color: white;
+    }
 }
 
 .current-pokemon-artwork {
@@ -47,8 +51,6 @@
 
 .current-pokemon-pokedex {
     padding: 10px 40px;
-    max-width: 420px;
-    word-wrap: break-word;
 
 }
 
@@ -61,6 +63,8 @@
 .description {
     margin-bottom: 24px;
     line-height: 1.6;
+    max-width: 420px;
+    word-wrap: break-word;
 }
 
 h2 {
