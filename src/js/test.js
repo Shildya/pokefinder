@@ -15,6 +15,8 @@ function getInfos() {
     fetch(url)
     .then(result => result.json())
     .then((data) => {
+        document.title = (((data.name).charAt(0).toUpperCase() + (data.name).slice(1)) + " | PokéFinder");
+
         var pokemonSprite = document.querySelector('.current-pokemon-artwork');
         pokemonSprite.src = `https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`;
 
@@ -80,4 +82,8 @@ function getPokedex() {
         };
         currentPokemonPokedex.appendChild(pokemonDescriptionFragment);
     });
+};
+
+function getEvolutions() {
+
 };

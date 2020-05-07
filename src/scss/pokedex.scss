@@ -1,12 +1,15 @@
 .current-pokemon {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 820px;
 
     &.dark-mode {
         color: white;
     }
 
-    @media (max-width: 670px) {
+    @media (max-width: 860px) {
         flex-direction: column;
     }
 }
@@ -44,7 +47,7 @@
 
 .current-pokemon-pokedex {
     padding: 10px 40px;
-    max-width: 450px;
+    max-width: 420px;
 }
 
 .version {
@@ -57,7 +60,7 @@
     margin-bottom: 24px;
 }
 
-.pokedex h2 {
+h2 {
     padding: 0px 40px;
     margin-bottom: 20px;
     font-size: 20px;
