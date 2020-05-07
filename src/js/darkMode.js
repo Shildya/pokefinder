@@ -1,3 +1,5 @@
+var limit = 151;
+
 var moon = document.querySelector('.moon');
 var sun = document.querySelector('.sun');
 
@@ -11,11 +13,12 @@ const logoLight = document.querySelector('.logo-light');
 const searchBar = document.querySelector('.search-bar');
 const noResult = document.querySelector('.no-result');
 
-const currentPokemon = document.querySelector('.current-pokemon')
+const currentPokemon = document.querySelector('.current-pokemon');
+const currentPokemonEvolution = document.querySelector('.current-pokemon-evolutions');
 
 if (localStorage.getItem('mode') === 'night') {
     darkMode();
-}
+};
 
 function darkMode() {
 
@@ -50,8 +53,9 @@ function darkMode() {
         noResult.classList.toggle('dark-mode');
     };
 
-    if (currentPokemon !== null) {
+    if (currentPokemon !== null && currentPokemonEvolution !== null) {
         currentPokemon.classList.toggle('dark-mode');
+        currentPokemonEvolution.classList.toggle('dark-mode');
     };
 };
 
@@ -75,13 +79,13 @@ if (searchBar !== null) {
             }
             else {
                 pokemon.classList.remove('hidden');
-            }
+            };
         });
         if (document.querySelectorAll('.pokemon.hidden').length === limit) {
             document.querySelector('.no-result').classList.remove('hidden');
         }
         else {
             document.querySelector('.no-result').classList.add('hidden');
-        }
+        };
     });
 };

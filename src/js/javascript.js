@@ -1,5 +1,5 @@
 const baseURL = 'https://pokeapi.co/api/v2/';
-const limit = 151;
+var limit = 151;
 
 const pokemonList = document.createDocumentFragment();
 
@@ -46,7 +46,7 @@ for (i = 1; i < limit + 1; i++) {
         var name = document.createTextNode(`${data.name}`);
         pokemonName.appendChild(name);
         pokemonName.addEventListener('click', () => {
-            localStorage.setItem('pokemonId', `${data.id}`);
+            localStorage.setItem('pokemonId', data.id);
         });
 
         data.types.forEach(types => {
