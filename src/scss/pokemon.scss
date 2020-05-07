@@ -70,7 +70,6 @@
     justify-content: center;
     align-items: center;
     width: 160px;
-    color: white;
     font-size: 12px;
 
     @media (max-width: 600px) {
@@ -90,6 +89,7 @@
     text-transform: uppercase;
     border-radius: 20px;
     margin: 4px 10px;
+    color: white;
 }
 
 .normal {

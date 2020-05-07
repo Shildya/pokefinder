@@ -11,6 +11,8 @@ const logoLight = document.querySelector('.logo-light');
 const searchBar = document.querySelector('.search-bar');
 const noResult = document.querySelector('.no-result');
 
+const currentPokemon = document.querySelector('.current-pokemon')
+
 if (localStorage.getItem('mode') === 'night') {
     darkMode();
 }
@@ -46,6 +48,10 @@ function darkMode() {
 
         searchBar.classList.toggle('dark-mode');
         noResult.classList.toggle('dark-mode');
+    };
+
+    if (currentPokemon !== null) {
+        currentPokemon.classList.toggle('dark-mode');
     };
 };
 
