@@ -29,7 +29,7 @@
     font-weight: bold;
     text-transform: capitalize;
     font-size: 20px;
-    margin-bottom: 16px;
+    margin-bottom: 60px;
     
     &.dark-mode {
         color: white;
@@ -66,7 +66,7 @@
     word-wrap: break-word;
 }
 
-h2 {
+.pokedex-title {
     padding: 0px 40px;
     margin-bottom: 20px;
     font-size: 20px;
@@ -84,17 +84,18 @@ h2 {
 }
 
 .evolution-artwork {
-    width: 100px;
-    padding: 24px;
-}
-
-
-.evolve-method::after {
-    content: ' ▼';
+    width: 120px;
+    padding: 36px;
 }
 
 .evolution-name {
     text-transform: capitalize;
+}
+
+.evolution-title {
+    padding: 40px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .evolution-tree {
@@ -102,9 +103,9 @@ h2 {
     margin-top: 20px;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
     margin: 0 auto;
-
+    padding: 0px 20px;
+    max-width: 910px;
 }
 
 .first-evolution, .second-evolution, .third-evolution {
@@ -113,10 +114,51 @@ h2 {
     align-items: center;
     flex-direction: column;
     border: 1px solid rgb(72, 72, 72);
-    justify-content: center;
-    justify-items: center;
     margin-top: -1px;
     margin-left: -1px;
-    width: 210px;
-    height: 210px;
+    width: 300px;
+    height: 300px;
+}
+
+.evolve-method {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 250px;
+    line-height: 1.4;
+
+    &::after {
+        content: '\00a0▼';
+    }
+}
+
+.evolve-item-name {
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.first-evolution.eevee {
+    background-color: red;
+}
+
+.evolution-tree.eevee {
+    @for $i from 1 through 4 {
+        .second-evolution:nth-child(#{$i}) {
+            order: #{$i};
+        }
+    }
+    @for $i from 5 through 9 {
+        .second-evolution:nth-child(#{$i}) {
+            order: $i + 1;
+        }
+    }
+
+    .first-evolution {
+        order: 5;
+
+        @media (max-width: 942px) {
+            order: 0;
+        }
+    }
 }
