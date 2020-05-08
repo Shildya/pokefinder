@@ -143,14 +143,14 @@
 }
 
 .evolution-tree.eevee {
-    @for $i from 1 through 4 {
+    @for $i from 1 through 5 {
         .second-evolution:nth-child(#{$i}) {
-            order: #{$i} - 1;
+            order: $i - 1;
         }
     }
     @for $i from 5 through 9 {
         .second-evolution:nth-child(#{$i}) {
-            order: $i + 1;
+            order: $i;
         }
     }
 
