@@ -148,7 +148,7 @@
             order: #{$i};
         }
     }
-    @for $i from 5 through 9 {
+    @for $i from 6 through 9 {
         .second-evolution:nth-child(#{$i}) {
             order: $i + 1;
         }
