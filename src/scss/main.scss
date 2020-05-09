@@ -2,9 +2,8 @@ main {
     display: flex;
     align-items: center;
     flex-direction: column;
-    transform: translateY(100px);
-    margin-bottom: 200px;
-    min-height: calc(100vh - 229px);
+    min-height: calc(100vh - 271px);
+    margin: 120px 0px;
 }
 
 .search-bar {
