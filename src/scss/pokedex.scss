@@ -83,6 +83,7 @@
     font-style: italic;
     font-weight: bold;
     margin-bottom: 12px;
+    line-height: 1.6;
 }
 
 .description {
@@ -97,6 +98,10 @@
     margin-bottom: 20px;
     font-size: 20px;
     font-weight: bold;
+
+    @media (max-width: 860px) {
+        text-align: center;
+    }
 }
 
 .current-pokemon-evolutions {
@@ -140,6 +145,7 @@
     margin-top: 20px;
     flex-wrap: wrap;
     justify-content: center;
+    text-align: center;
     margin: 0 auto;
     padding: 0px 20px;
     max-width: 910px;
