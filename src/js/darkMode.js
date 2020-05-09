@@ -1,4 +1,4 @@
-var limit = 151;
+var limit = 721;
 
 var moon = document.querySelector('.moon');
 var sun = document.querySelector('.sun');

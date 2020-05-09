@@ -78,18 +78,29 @@
     flex-direction: column;
     align-items: center;
 
+    .evolution-name {
+        text-transform: capitalize;
+        text-decoration: none;
+        color: #0645ad;
+        cursor: pointer;
+    
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
     &.dark-mode {
         color: white;
+
+        .evolution-name {
+            color: #80b6ff;
+        }
     }
 }
 
 .evolution-artwork {
     width: 120px;
     padding: 36px;
-}
-
-.evolution-name {
-    text-transform: capitalize;
 }
 
 .evolution-title {

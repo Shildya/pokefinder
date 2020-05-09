@@ -15,18 +15,51 @@ function getInfos() {
     fetch(url)
     .then(result => result.json())
     .then((data) => {
-        document.title = (((data.name).charAt(0).toUpperCase() + (data.name).slice(1)) + " | PokéFinder");
+        document.title = (((data.name).charAt(0).toUpperCase() + (data.name).slice(1))
+            .replace(new RegExp('-altered'), '')
+            .replace(new RegExp('-shield'), '')
+            .replace(new RegExp('-male'), '')
+            .replace(new RegExp('-average'), '')
+            .replace(new RegExp('mr-mime'), 'Mr. Mime')
+            .replace(new RegExp('mime-jr'), 'Mime Jr')
+            .replace(new RegExp('nidoran-f'), 'Nidoran ♀')
+            .replace(new RegExp('nidoran-m'), 'Nidoran ♂')
+            .replace(new RegExp('-normal'), '')
+            .replace(new RegExp('-plant'), '')
+            .replace(new RegExp('-land'), '')
+            .replace(new RegExp('-red-striped'), '')
+            .replace(new RegExp('-standard'), '')
+            .replace(new RegExp('-incarnate'), '')
+            .replace(new RegExp('-ordinary'), '')
+            .replace(new RegExp('-aria'), '')
+        + " | PokéFinder");
 
-        var pokemonSprite = document.querySelector('.current-pokemon-artwork');
-        pokemonSprite.src = `https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`;
-        // if (data.id == 487) {
-        //     pokemonSprite.src = `https://pokeres.bastionbot.org/images/pokemon/${data.id}-altered.png`;
-        // }
-        // else {
-        //     pokemonSprite.src = `https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`;
-        // }
+        var pokemonArtwork = document.querySelector('.current-pokemon-artwork');
+        // pokemonArtwork.src = `https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`;
+        if (data.id == 487) {
+            pokemonArtwork.src = `https://pokeres.bastionbot.org/images/pokemon/${data.id}-altered.png`;
+        }
+        else {
+            pokemonArtwork.src = `https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`;
+        }
 
-        document.querySelector('.current-pokemon-entries').textContent = '#' + data.id + ' ' + data.name;
+        document.querySelector('.current-pokemon-entries').textContent = '#' + data.id + ' ' + data.name
+            .replace(new RegExp('-altered'), '')
+            .replace(new RegExp('-shield'), '')
+            .replace(new RegExp('-male'), '')
+            .replace(new RegExp('-average'), '')
+            .replace(new RegExp('mr-mime'), 'Mr. Mime')
+            .replace(new RegExp('mime-jr'), 'Mime Jr')
+            .replace(new RegExp('nidoran-f'), 'Nidoran ♀')
+            .replace(new RegExp('nidoran-m'), 'Nidoran ♂')
+            .replace(new RegExp('-normal'), '')
+            .replace(new RegExp('-plant'), '')
+            .replace(new RegExp('-land'), '')
+            .replace(new RegExp('-red-striped'), '')
+            .replace(new RegExp('-standard'), '')
+            .replace(new RegExp('-incarnate'), '')
+            .replace(new RegExp('-ordinary'), '')
+            .replace(new RegExp('-aria'), '');
 
         data.types.forEach(types => {
 
@@ -110,12 +143,32 @@ function getEvolutions() {
                 evolutionArtwork.src = `https://pokeres.bastionbot.org/images/pokemon/${artworkId}.png`;
                 firstEvolution.appendChild(evolutionArtwork);
 
-                var evolutionName = document.createElement('p');
+                var evolutionName = document.createElement('a');
                 evolutionName.setAttribute('class', 'evolution-name');
-                evolutionName.textContent = data.chain.species.name;
+                evolutionName.href = 'infos.html';
+                evolutionName.textContent = data.chain.species.name
+                    .replace(new RegExp('-altered'), '')
+                    .replace(new RegExp('-shield'), '')
+                    .replace(new RegExp('-male'), '')
+                    .replace(new RegExp('-average'), '')
+                    .replace(new RegExp('mr-mime'), 'Mr. Mime')
+                    .replace(new RegExp('mime-jr'), 'Mime Jr')
+                    .replace(new RegExp('nidoran-f'), 'Nidoran ♀')
+                    .replace(new RegExp('nidoran-m'), 'Nidoran ♂')
+                    .replace(new RegExp('-normal'), '')
+                    .replace(new RegExp('-plant'), '')
+                    .replace(new RegExp('-land'), '')
+                    .replace(new RegExp('-red-striped'), '')
+                    .replace(new RegExp('-standard'), '')
+                    .replace(new RegExp('-incarnate'), '')
+                    .replace(new RegExp('-ordinary'), '')
+                    .replace(new RegExp('-aria'), '');
+                evolutionName.addEventListener('click', () => {
+                    localStorage.setItem('pokemonId', data.chain.species.name);
+                });
+
                 firstEvolution.appendChild(evolutionName);
                 evolutionTree.appendChild(firstEvolution);
-                console.log('firstEvolution')
 
                 if (data.chain.species.name == 'eevee') {
                     evolutionTree.classList.add('eevee');
@@ -128,6 +181,10 @@ function getEvolutions() {
 
                     if (evolveResult.evolution_details[0].trigger.name == 'trade') {
                         if (evolveResult.evolution_details[0].held_item == null) {
+                            var evolveMethod = document.createElement('p');
+                            evolveMethod.setAttribute('class', 'evolve-method');
+                            evolveMethod.textContent = 'Trade';
+                            secondEvolution.appendChild(evolveMethod);
                             // evolutionTree.textContent += 'Trade ▼';
                         }
                         else {
@@ -246,9 +303,29 @@ function getEvolutions() {
                     var artworkId = evolveResult.species.url.replace(new RegExp('https://pokeapi.co/api/v2/pokemon-species/'), '',).replace('/', '');
                     evolutionArtwork.src = `https://pokeres.bastionbot.org/images/pokemon/${artworkId}.png`;
                     secondEvolution.appendChild(evolutionArtwork);
-                    var evolutionName = document.createElement('p');
+                    var evolutionName = document.createElement('a');
                     evolutionName.setAttribute('class', 'evolution-name');
-                    evolutionName.textContent = evolveResult.species.name;
+                    evolutionName.href = 'infos.html';
+                    evolutionName.textContent = evolveResult.species.name
+                        .replace(new RegExp('-altered'), '')
+                        .replace(new RegExp('-shield'), '')
+                        .replace(new RegExp('-male'), '')
+                        .replace(new RegExp('-average'), '')
+                        .replace(new RegExp('mr-mime'), 'Mr. Mime')
+                        .replace(new RegExp('mime-jr'), 'Mime Jr')
+                        .replace(new RegExp('nidoran-f'), 'Nidoran ♀')
+                        .replace(new RegExp('nidoran-m'), 'Nidoran ♂')
+                        .replace(new RegExp('-normal'), '')
+                        .replace(new RegExp('-plant'), '')
+                        .replace(new RegExp('-land'), '')
+                        .replace(new RegExp('-red-striped'), '')
+                        .replace(new RegExp('-standard'), '')
+                        .replace(new RegExp('-incarnate'), '')
+                        .replace(new RegExp('-ordinary'), '')
+                        .replace(new RegExp('-aria'), '');
+                    evolutionName.addEventListener('click', () => {
+                        localStorage.setItem('pokemonId', evolveResult.species.name);
+                    });
                     secondEvolution.appendChild(evolutionName);
                     evolutionTree.appendChild(secondEvolution);
                     
@@ -315,11 +392,11 @@ function getEvolutions() {
                                 evolveMethod.textContent = 'Level up with Friendship';
                                 thirdEvolution.appendChild(evolveMethod);
                             }
-                            else if (evolveResult.evolution_details[0].location !== null && evolveResult.evolution_details[0].location !== '') {
+                            else if (evolveResult2.evolution_details[0].location !== null && evolveResult2.evolution_details[0].location !== '') {
                                 var evolveMethod = document.createElement('p');
                                 evolveMethod.setAttribute('class', 'evolve-method');
                                 evolveMethod.textContent = 'Level up in a special area';
-                                secondEvolution.appendChild(evolveMethod);
+                                thirdEvolution.appendChild(evolveMethod);
                             }
 
                             var evolutionArtwork = document.createElement('img');
@@ -327,9 +404,29 @@ function getEvolutions() {
                             var artworkId = evolveResult2.species.url.replace(new RegExp('https://pokeapi.co/api/v2/pokemon-species/'), '',).replace('/', '');
                             evolutionArtwork.src = `https://pokeres.bastionbot.org/images/pokemon/${artworkId}.png`;
                             thirdEvolution.appendChild(evolutionArtwork);
-                            var evolutionName = document.createElement('p');
+                            var evolutionName = document.createElement('a');
                             evolutionName.setAttribute('class', 'evolution-name');
-                            evolutionName.textContent = evolveResult2.species.name;
+                            evolutionName.href = 'infos.html'
+                            evolutionName.textContent = evolveResult2.species.name
+                                .replace(new RegExp('-altered'), '')
+                                .replace(new RegExp('-shield'), '')
+                                .replace(new RegExp('-male'), '')
+                                .replace(new RegExp('-average'), '')
+                                .replace(new RegExp('mr-mime'), 'Mr. Mime')
+                                .replace(new RegExp('mime-jr'), 'Mime Jr')
+                                .replace(new RegExp('nidoran-f'), 'Nidoran ♀')
+                                .replace(new RegExp('nidoran-m'), 'Nidoran ♂')
+                                .replace(new RegExp('-normal'), '')
+                                .replace(new RegExp('-plant'), '')
+                                .replace(new RegExp('-land'), '')
+                                .replace(new RegExp('-red-striped'), '')
+                                .replace(new RegExp('-standard'), '')
+                                .replace(new RegExp('-incarnate'), '')
+                                .replace(new RegExp('-ordinary'), '')
+                                .replace(new RegExp('-aria'), '');
+                            evolutionName.addEventListener('click', () => {
+                                localStorage.setItem('pokemonId', evolveResult2.species.name);
+                            })
                             thirdEvolution.appendChild(evolutionName);
                             evolutionTree.appendChild(thirdEvolution);
                         });
