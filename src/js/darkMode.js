@@ -38,6 +38,11 @@ function darkMode() {
         pokemonName.classList.toggle('dark-mode');
     });
 
+    var rightArrows = document.querySelectorAll('.right-arrow');
+    rightArrows.forEach(rightArrow => {
+        rightArrow.classList.toggle('dark-mode');
+    });
+
     header.classList.toggle('dark-mode');
     body.classList.toggle('dark-mode');
     footer.classList.toggle('dark-mode')

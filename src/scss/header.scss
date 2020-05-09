@@ -9,29 +9,26 @@ header {
     &.dark-mode {
         background-color: #0e0e0e;
         border-bottom: 1px solid rgb(72,72,72);
-
-        .right-arrow-desktop {
-            fill: white;
-
-            &:hover {
-                fill: rgb(72,72,72);
-            }
-        }
     }
 }
 
-.right-arrow-desktop {
+.right-arrow.desktop {
     position: absolute;
     left: 20px;
     top: 50%;
+    width: 28px;
+    height: 28px;
     transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
     cursor: pointer;
     fill: black;
 
     &:hover {
         fill: gray;
+    }
+
+    &.dark-mode {
+        fill: white;
+
     }
 
     @media (max-width: 450px) {

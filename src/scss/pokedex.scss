@@ -1,11 +1,11 @@
-.right-arrow-mobile {
+.right-arrow.mobile {
     position: absolute;
     left: 20px;
-    width: 40px;
-    height: 40px;
+    width: 28px;
+    height: 28px;
     cursor: pointer;
-    fill: white;
-    transform: translateY(-25%);
+    fill: black;
+    transform: translateY(-4px);
 
     &:hover {
         fill: gray;
@@ -13,6 +13,14 @@
 
     @media (min-width: 450px) {
         display: none;
+    }
+
+    &.dark-mode {
+        fill: white;
+
+        &:hover {
+            fill: rgb(72, 72, 72);
+        }
     }
 }
 
