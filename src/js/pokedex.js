@@ -18,7 +18,7 @@ function getInfos() {
         document.title = prettyName(((data.name).charAt(0).toUpperCase() + (data.name).slice(1)) + " | PokéFinder");
 
         var pokemonArtwork = document.querySelector('.current-pokemon-artwork');
-        // pokemonArtwork.src = `https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`;
+
         if (data.id == 487) {
             pokemonArtwork.src = `https://pokeres.bastionbot.org/images/pokemon/${data.id}-altered.png`;
         }
@@ -132,7 +132,9 @@ function getEvolutions() {
                 if (data.chain.species.name == 'eevee') {
                     evolutionTree.classList.add('eevee');
                 }
-
+                else if (data.chain.species.name == 'tyrogue') {
+                    evolutionTree.classList.add('tyrogue');
+                }
                 data.chain.evolves_to.forEach(evolveResult => {
 
                     var secondEvolution = document.createElement('div');
@@ -140,22 +142,22 @@ function getEvolutions() {
 
                     if (evolveResult.evolution_details[0].trigger.name == 'trade') {
                         writeTradeCondition(evolveResult, secondEvolution);
-                        console.log('test')
+                        
                     }
                     else if (evolveResult.evolution_details[0].trigger.name == 'use-item') {
                         writeUseItem(evolveResult, secondEvolution);
-                        console.log('test')
+                        
                     }
                     else if (evolveResult.evolution_details[0].trigger.name == 'level-up') {
-                        console.log('test')
+                        
                         if (evolveResult.evolution_details[0].min_level !== null) {
-                            console.log('test')
+                            
                             if (evolveResult.evolution_details[0].time_of_day !== null && evolveResult.evolution_details[0].time_of_day !== '') {
                                 var evolveMethod = document.createElement('p');
                                 evolveMethod.setAttribute('class', 'evolve-method');
                                 evolveMethod.textContent = 'Level ' + evolveResult.evolution_details[0].min_level + ' (' + evolveResult.evolution_details[0].time_of_day + ')';
                                 secondEvolution.appendChild(evolveMethod);
-                                console.log('test')
+                                
                             }
                             else if (evolveResult.evolution_details[0].gender !== null && evolveResult.evolution_details[0].gender !== '') {
                                 var evolveMethod = document.createElement('p');
@@ -168,34 +170,87 @@ function getEvolutions() {
                                 }
                                 secondEvolution.appendChild(evolveMethod);
                             }
+                            else if (evolveResult.evolution_details[0].relative_physical_stats !== null) {
+                                var evolveMethod = document.createElement('p');
+                                evolveMethod.setAttribute('class', 'evolve-method');
+                        
+                                if (evolveResult.evolution_details[0].relative_physical_stats == 1) {
+                                    evolveMethod.textContent = 'Level ' + evolveResult.evolution_details[0].min_level + ' (Attack > Defense)';
+                                }
+                                else if (evolveResult.evolution_details[0].relative_physical_stats == -1) {
+                                    evolveMethod.textContent = 'Level ' + evolveResult.evolution_details[0].min_level + ' (Attack < Defense)';
+                                }
+                                else {
+                                    evolveMethod.textContent = 'Level ' + evolveResult.evolution_details[0].min_level + ' (Attack = Defense)';
+                                }
+                                
+                                secondEvolution.appendChild(evolveMethod);
+                            }
+                            else if (evolveResult.evolution_details[0].party_type !== null) {
+                                var evolveMethod = document.createElement('p');
+                                evolveMethod.setAttribute('class', 'evolve-method');
+                                evolveMethod.textContent = 'Level ' + evolveResult.evolution_details[0].min_level + ' with a ' + evolveResult.evolution_details[0].party_type.name + '-type in the party';
+                                secondEvolution.appendChild(evolveMethod);
+                            }
+                            else if (evolveResult.evolution_details[0].turn_upside_down == true) {
+                                var evolveMethod = document.createElement('p');
+                                evolveMethod.setAttribute('class', 'evolve-method');
+                                evolveMethod.textContent = 'Level ' + evolveResult.evolution_details[0].min_level + ' (holding game system upside-down)';
+                                secondEvolution.appendChild(evolveMethod);
+                            }
                             else {
                                 var evolveMethod = document.createElement('p');
                                 evolveMethod.setAttribute('class', 'evolve-method');
                                 evolveMethod.textContent = 'Level ' + evolveResult.evolution_details[0].min_level;
                                 secondEvolution.appendChild(evolveMethod);
-                                console.log('test')
-                            }
+                            };
                             
                         }
+                        else if (evolveResult.evolution_details[0].party_species !== null) {
+                            var evolveMethod = document.createElement('div');
+                            evolveMethod.setAttribute('class', 'evolve-method');
+                            
+                            var evolveMethodText = document.createElement('p');
+                            evolveMethodText.setAttribute('class', 'evolve-method-text');
+                            evolveMethodText.textContent = 'Level up with\xa0';
+                            evolveMethod.appendChild(evolveMethodText);
+
+                            var pokemonName = document.createElement('a');
+                            pokemonName.setAttribute('class', 'evolution-name');
+                            pokemonName.href = 'infos.html';
+                            pokemonName.textContent = evolveResult.evolution_details[0].party_species.name;
+                            pokemonName.addEventListener('click', () => {
+                                localStorage.setItem('pokemonId', evolveResult.evolution_details[0].party_species.name);
+                            });
+                            evolveMethod.appendChild(pokemonName);
+
+                            var evolveMethodText = document.createElement('p');
+                            evolveMethodText.setAttribute('class', 'evolve-method-text');
+                            evolveMethodText.textContent = '\xa0in party';
+                            evolveMethod.appendChild(evolveMethodText);
+
+                            secondEvolution.appendChild(evolveMethod);
+                        }
                         else if (evolveResult.evolution_details[0].min_happiness !== null && evolveResult.evolution_details[0].min_happiness !== '') {
+
                             if (evolveResult.evolution_details[0].time_of_day !== null && evolveResult.evolution_details[0].time_of_day !== '') {
                                 var evolveMethod = document.createElement('p');
                                 evolveMethod.setAttribute('class', 'evolve-method');
                                 evolveMethod.textContent = 'Level up with Friendship (' + evolveResult.evolution_details[0].time_of_day + ')';
                                 secondEvolution.appendChild(evolveMethod);
-                                console.log('test')
+                                
                             }
                             else {
                                 var evolveMethod = document.createElement('p');
                                 evolveMethod.setAttribute('class', 'evolve-method');
                                 evolveMethod.textContent = 'Level up with Friendship';
                                 secondEvolution.appendChild(evolveMethod);
-                                console.log('test')
+                                
                             }
                         }
                         else if (evolveResult.evolution_details[0].known_move_type !== null || evolveResult.evolution_details[0].known_move !== null) {
                             writeKnownMoveCondition(evolveResult, secondEvolution);
-                            console.log('test')
+                            
                         }
                         else if (evolveResult.evolution_details[0].location !== null && evolveResult.evolution_details[0].location !== '') {
                             if (evolveResult.evolution_details[0].location.name == 'sinnoh-route-217') {
@@ -203,21 +258,21 @@ function getEvolutions() {
                                 evolveMethod.setAttribute('class', 'evolve-method');
                                 evolveMethod.textContent = 'Level up near Ice Rock';
                                 secondEvolution.appendChild(evolveMethod);
-                                console.log('test')
+                                
                             }
                             else if (evolveResult.evolution_details[0].location.name == 'eterna-forest') {
                                 var evolveMethod = document.createElement('p');
                                 evolveMethod.setAttribute('class', 'evolve-method');
                                 evolveMethod.textContent = 'Level up near Moss Rock';
                                 secondEvolution.appendChild(evolveMethod);
-                                console.log('test')
+                                
                             }
                             else {
                                 var evolveMethod = document.createElement('p');
                                 evolveMethod.setAttribute('class', 'evolve-method');
                                 evolveMethod.textContent = 'Level up in a special area';
                                 secondEvolution.appendChild(evolveMethod);
-                                console.log('test')
+                                
                             }
                         }
                         else if (evolveResult.evolution_details[0].held_item !== null) {
@@ -228,13 +283,13 @@ function getEvolutions() {
                             evolveMethodText.setAttribute('class', 'evolve-method-text');
                             evolveMethodText.textContent = 'Level up holding ';
                             evolveMethod.appendChild(evolveMethodText);
-                            console.log('test')
+                            
 
                             var evolveItemSprite = document.createElement('img');
                             evolveItemSprite.setAttribute('class', 'evolve-item-sprite');
                             evolveItemSprite.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${evolveResult.evolution_details[0].held_item.name}.png`;
                             evolveMethod.appendChild(evolveItemSprite);
-                            console.log('test')
+                            
 
                             var evolveItemName = document.createElement('p');
                             evolveItemName.setAttribute('class', 'evolve-item-name')
@@ -246,9 +301,15 @@ function getEvolutions() {
                                 evolveTime.setAttribute('class', 'evolve-time')
                                 evolveTime.textContent = ` (${evolveResult.evolution_details[0].time_of_day})`;
                                 evolveMethod.appendChild(evolveTime);
-                                console.log('test')
+                                
                             }
 
+                            secondEvolution.appendChild(evolveMethod);
+                        }
+                        else if (evolveResult.evolution_details[0].min_beauty !== null) {
+                            var evolveMethod = document.createElement('p');
+                            evolveMethod.setAttribute('class', 'evolve-method');
+                            evolveMethod.textContent = 'Level up (Beauty > ' + (evolveResult.evolution_details[0].min_beauty - 1) + ')';
                             secondEvolution.appendChild(evolveMethod);
                         }
                     }
@@ -280,10 +341,38 @@ function getEvolutions() {
                             thirdEvolution.setAttribute('class', 'third-evolution');
 
                             if (evolveResult2.evolution_details[0].min_level !== null) {
-                                var evolveMethod = document.createElement('p');
-                                evolveMethod.setAttribute('class', 'evolve-method');
-                                evolveMethod.textContent = 'Level ' + evolveResult2.evolution_details[0].min_level;
-                                thirdEvolution.appendChild(evolveMethod);
+                                if (evolveResult2.evolution_details[0].relative_physical_stats !== null) {
+                                    if (evolveResult2.evolution_details[0].relative_physical_stats == 1) {
+                                        var evolveMethod = document.createElement('p');
+                                        evolveMethod.setAttribute('class', 'evolve-method');
+                                        evolveMethod.textContent = 'Level ' + evolveResult2.evolution_details[0].min_level + ' (attack > defense)';
+                                        thirdEvolution.appendChild(evolveMethod);
+                                    }
+                                    else if (evolveResult2.evolution_details[0].relative_physical_stats == -1) {
+                                        var evolveMethod = document.createElement('p');
+                                        evolveMethod.setAttribute('class', 'evolve-method');
+                                        evolveMethod.textContent = 'Level ' + evolveResult2.evolution_details[0].min_level + ' (attack < defense)';
+                                        thirdEvolution.appendChild(evolveMethod);
+                                    }
+                                    else {
+                                        var evolveMethod = document.createElement('p');
+                                        evolveMethod.setAttribute('class', 'evolve-method');
+                                        evolveMethod.textContent = 'Level ' + evolveResult2.evolution_details[0].min_level + ' (attack = defense)';
+                                        thirdEvolution.appendChild(evolveMethod);
+                                    }
+                                }
+                                else if (evolveResult2.evolution_details[0].needs_overworld_rain == true) {
+                                    var evolveMethod = document.createElement('p');
+                                    evolveMethod.setAttribute('class', 'evolve-method');
+                                    evolveMethod.textContent = 'Level ' + evolveResult2.evolution_details[0].min_level + ' (raining)';
+                                    thirdEvolution.appendChild(evolveMethod);
+                                }
+                                else {
+                                    var evolveMethod = document.createElement('p');
+                                    evolveMethod.setAttribute('class', 'evolve-method');
+                                    evolveMethod.textContent = 'Level ' + evolveResult2.evolution_details[0].min_level;
+                                    thirdEvolution.appendChild(evolveMethod);
+                                }
                             }
                             else if (evolveResult2.evolution_details[0].trigger.name == 'trade') {
                                 writeTradeCondition(evolveResult2, thirdEvolution);
@@ -318,12 +407,11 @@ function getEvolutions() {
                             evolutionName.textContent = prettyName(evolveResult2.species.name);
                             evolutionName.addEventListener('click', () => {
                                 localStorage.setItem('pokemonId', evolveResult2.species.name);
-                            })
+                            });
                             thirdEvolution.appendChild(evolutionName);
                             evolutionTree.appendChild(thirdEvolution);
                         });
                     };
-                        
                 });
             };
         });
