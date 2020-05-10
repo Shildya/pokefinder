@@ -168,8 +168,9 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    max-width: 250px;
+    max-width: 252px;
     line-height: 1.4;
+    flex-wrap: wrap;
 
     &::after {
         content: '\00a0▼';
@@ -204,4 +205,8 @@
             order: -1;
         }
     }
+}
+
+.move-name {
+    text-transform: capitalize;
 }

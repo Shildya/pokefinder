@@ -43,24 +43,7 @@ for (i = 1; i < limit + 1; i++) {
         pokemonSprite.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`;
 
         var pokemonName = document.getElementById(`${data.id}`).getElementsByClassName('pokemon-name')[0];
-        var name = document.createTextNode(`${data.name
-            .replace(new RegExp('-altered'), '')
-            .replace(new RegExp('-shield'), '')
-            .replace(new RegExp('-male'), '')
-            .replace(new RegExp('-average'), '')
-            .replace(new RegExp('mr-mime'), 'Mr. Mime')
-            .replace(new RegExp('mime-jr'), 'Mime Jr')
-            .replace(new RegExp('nidoran-f'), 'Nidoran ♀')
-            .replace(new RegExp('nidoran-m'), 'Nidoran ♂')
-            .replace(new RegExp('-normal'), '')
-            .replace(new RegExp('-plant'), '')
-            .replace(new RegExp('-land'), '')
-            .replace(new RegExp('-red-striped'), '')
-            .replace(new RegExp('-standard'), '')
-            .replace(new RegExp('-incarnate'), '')
-            .replace(new RegExp('-ordinary'), '')
-            .replace(new RegExp('-aria'), '')
-        }`);
+        var name = document.createTextNode(`${prettyName(data.name)}`);
         pokemonName.appendChild(name);
         pokemonName.addEventListener('click', () => {
             localStorage.setItem('pokemonId', data.id);
@@ -77,3 +60,23 @@ for (i = 1; i < limit + 1; i++) {
         });
     });
 };
+
+function prettyName(name) {
+    return name
+    .replace(new RegExp('-altered'), '')
+    .replace(new RegExp('-shield'), '')
+    .replace(new RegExp('-male'), '')
+    .replace(new RegExp('-average'), '')
+    .replace(new RegExp('mr-mime'), 'Mr. Mime')
+    .replace(new RegExp('mime-jr'), 'Mime Jr')
+    .replace(new RegExp('nidoran-f'), 'Nidoran ♀')
+    .replace(new RegExp('nidoran-m'), 'Nidoran ♂')
+    .replace(new RegExp('-normal'), '')
+    .replace(new RegExp('-plant'), '')
+    .replace(new RegExp('-land'), '')
+    .replace(new RegExp('-red-striped'), '')
+    .replace(new RegExp('-standard'), '')
+    .replace(new RegExp('-incarnate'), '')
+    .replace(new RegExp('-ordinary'), '')
+    .replace(new RegExp('-aria'), '');
+}
