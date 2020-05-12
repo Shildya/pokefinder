@@ -83,7 +83,6 @@ function writePokedexDescription(version, pokedex) {
     currentPokemonPokedex.appendChild(pokemonDescriptionFragment);
 };
 
-
 function getEvolutions() {
     
     url = ''.concat(baseURL, 'pokemon-species/', pokemonId);

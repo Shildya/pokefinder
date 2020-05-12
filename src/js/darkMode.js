@@ -45,7 +45,7 @@ function darkMode() {
 
     header.classList.toggle('dark-mode');
     body.classList.toggle('dark-mode');
-    footer.classList.toggle('dark-mode')
+    footer.classList.toggle('dark-mode');
 
     logoLight.classList.toggle('hidden');
     logoDark.classList.toggle('hidden');

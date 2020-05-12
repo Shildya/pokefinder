@@ -40,9 +40,16 @@
 
 .pokemon-id {
     color: black;
+}
 
-    &.dark-mode {
+body.dark-mode {
+
+    .pokemon-id {
         color: #dddddd;
+    }
+
+    .pokemon-name {
+        color: #80b6ff;
     }
 }
 
@@ -51,10 +58,6 @@
     text-decoration: none;
     color: #0645ad;
     cursor: pointer;
-
-    &.dark-mode {
-        color: #80b6ff;
-    }
 
     &:hover {
         text-decoration: underline;
