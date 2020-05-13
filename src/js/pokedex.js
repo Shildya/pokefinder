@@ -396,7 +396,7 @@ function getLevelUpConditions(path) {
 		createElement({
 			type: 'p',
 			class: 'evolve-method-text',
-			text: 'Level up knowing ',
+			text: 'Level up knowing\xa0',
 			parent: evolutionMethodFragment,
 		});
 
@@ -580,7 +580,7 @@ function getShadeConditions() {
 	createElement({
 		type: 'p',
 		class: 'evolve-method-text',
-		text: '\x0ain bag',
+		text: '\xa0in bag',
 		parent: evolutionMethodFragment,
 	});
 }
