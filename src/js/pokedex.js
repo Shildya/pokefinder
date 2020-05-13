@@ -396,7 +396,14 @@ function getLevelUpConditions(path) {
 		createElement({
 			type: 'p',
 			class: 'move-name',
-			text: 'Level up knowing ' + path.evolution_details[0].known_move.name.replace('-', ' '),
+			text: 'Level up knowing ',
+			parent: evolutionMethodFragment,
+		});
+
+		createElement({
+			type: 'p',
+			class: 'move-name',
+			text: path.evolution_details[0].known_move.name.replace('-', ' '),
 			parent: evolutionMethodFragment,
 		});
 	}
