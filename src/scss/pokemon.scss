@@ -9,10 +9,6 @@
     margin-top: -1px;
     border: 1px solid gray;
 
-    &.dark-mode {
-        border: 1px solid rgb(72, 72, 72);
-    }
-
     &.hidden {
         display: none;
     }
@@ -30,14 +26,6 @@
     }
 }
 
-.pokemon:first-of-type {
-    border-top: 1px solid gray;
-
-    &.dark-mode {
-        border-top: 1px solid rgb(72, 72, 72);
-    }
-}
-
 .pokemon-id {
     color: black;
 }
@@ -51,6 +39,11 @@ body.dark-mode {
     .pokemon-name {
         color: #80b6ff;
     }
+    
+    .pokemon {
+        border: 1px solid rgb(72, 72, 72);
+    }
+
 }
 
 .pokemon-name {
