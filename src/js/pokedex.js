@@ -395,7 +395,7 @@ function getLevelUpConditions(path) {
 	else if (path.evolution_details[0].known_move !== null) {
 		createElement({
 			type: 'p',
-			class: 'move-name',
+			class: 'evolve-method-text',
 			text: 'Level up knowing ',
 			parent: evolutionMethodFragment,
 		});
