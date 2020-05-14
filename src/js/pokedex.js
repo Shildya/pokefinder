@@ -1,7 +1,7 @@
 const baseURL = 'https://pokeapi.co/api/v2/';
 const evolutionTree = document.querySelector('.evolution-tree');
 specialArtworks = ['ids'];
-specialEvolutions = ['names'];
+specialEvolutions = ['eevee', 'tyrogue'];
 
 if (localStorage.getItem('pokemonId') !== null) {
 	var pokemonId = localStorage.getItem('pokemonId');
