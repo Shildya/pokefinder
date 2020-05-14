@@ -16,12 +16,17 @@ function getInfos() {
 	fetch(url)
 	.then(result => result.json())
 	.then(data => {
+		getPokemonEntries(data.id, data.name);
 		setPageTitle(data.name);
 		getArtwork(data.id);
 		getTypes(data.varieties[0].pokemon.url);
 		getPokedex(data.flavor_text_entries);
 		getEvolutionTree(data.evolution_chain.url);
 	});
+}
+
+function getPokemonEntries(id, name) {
+	document.querySelector('.current-pokemon-entries').textContent = '#' + id + ' ' + prettyName(name);
 }
 
 function setPageTitle(name) {
