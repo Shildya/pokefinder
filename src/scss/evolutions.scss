@@ -40,6 +40,7 @@
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
+    line-height: 1.6;
     margin: 0 auto;
     padding: 0px 20px;
     max-width: 910px;
@@ -74,10 +75,6 @@
 .evolve-item-name {
     font-size: 14px;
     text-transform: capitalize;
-}
-
-.first-evolution.eevee {
-    background-color: red;
 }
 
 .evolution-tree.eevee {
