@@ -371,7 +371,7 @@ function getLevelUpConditions(path) {
 		createElement({
 			type: 'p',
 			class: 'evolve-method-text',
-			text: 'Level up holding ',
+			text: 'Level up holding\xa0',
 			parent: evolutionMethodFragment,
 		});
 
@@ -531,7 +531,7 @@ function getTradeConditions(path) {
 		createElement({
 			type: 'p',
 			class: 'evolve-method-text',
-			text: 'Trade holding ',
+			text: 'Trade holding\xa0',
 			parent: evolutionMethodFragment,
 		});
 
