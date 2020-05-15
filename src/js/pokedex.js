@@ -466,7 +466,7 @@ function getUseItemConditions(path) {
 	createElement({
 		type: 'p',
 		class: 'evolve-method-text',
-		text: 'Using a',
+		text: 'Using a\xa0',
 		parent: evolutionMethodFragment,
 	});
 	// Item Sprite
