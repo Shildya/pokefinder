@@ -18,7 +18,7 @@ function getInfos() {
 	.then(data => {
 		getPokemonEntries(data.id, data.name);
 		setPageTitle(data.name);
-		getArtwork(data.id);
+		getArtwork(data);
 		getTypes(data.varieties[0].pokemon.url);
 		getPokedex(data.flavor_text_entries);
 		getEvolutionTree(data.evolution_chain.url);
@@ -35,17 +35,18 @@ function setPageTitle(name) {
 	document.title = title;
 }
 
-function getArtwork(id) {
+function getArtwork(data) {
 	var pokemonArtwork = document.querySelector('.current-pokemon-artwork');
-	if (specialArtworks.includes(id)) {
-		pokemonArtwork.src = getSpecialArtwork(id);
+	if (specialArtworks.includes(data.id)) {
+		pokemonArtwork.src = getSpecialArtwork(data.name);
 	}
 	else {
-		pokemonArtwork.src = `https://pokeres.bastionbot.org/images/pokemon/${id}.png`;
+		pokemonArtwork.src = `https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`;
+		pokemonArtwork.alt = data.name;
 	}
 }
 
-function getSpecialArtwork(id) {
+function getSpecialArtwork(name) {
 	return;
 }
 
@@ -169,6 +170,7 @@ function getEvolutions(options) {
 			class: 'evolution-artwork',
 			src: getSpecialArtwork(),
 			parent: evolution,
+			alt: options.path.species.name,
 		});
 	}
 	else {
@@ -177,6 +179,7 @@ function getEvolutions(options) {
 			class: 'evolution-artwork',
 			src: `https://pokeres.bastionbot.org/images/pokemon/${artworkId}.png`,
 			parent: evolution,
+			alt: options.path.species.name,
 		});
 	}
 
@@ -380,6 +383,7 @@ function getLevelUpConditions(path) {
 			class: 'evolve-item-sprite',
 			src: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${path.evolution_details[0].held_item.name}.png`,
 			parent: evolutionMethodFragment,
+			alt: path.evolution_details[0].held_item.name,
 		});
 
 		createElement({
@@ -475,6 +479,7 @@ function getUseItemConditions(path) {
 		class: 'evolve-item-sprite',
 		src: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${path.evolution_details[0].item.name}.png`,
 		parent: evolutionMethodFragment,
+		alt: path.evolution_details[0].item.name,
 	});
 	// Item Name
 	createElement({
@@ -540,6 +545,7 @@ function getTradeConditions(path) {
 			class: 'evolve-item-sprite',
 			src: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${path.evolution_details[0].held_item.name}.png`,
 			parent: evolutionMethodFragment,
+			alt: path.evolution_details[0].held_item.name,
 		});
 
 		createElement({
@@ -573,6 +579,7 @@ function getShadeConditions() {
 		class: 'evolve-item-sprite',
 		src: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png`,
 		parent: evolutionMethodFragment,
+		alt: 'Poké Ball',
 	});
 
 	createElement({
@@ -633,6 +640,9 @@ function createElement(options) {
     }
     if (options.src) {
         element.src = options.src;
-    }
+	}
+	if (options.alt) {
+		element.setAttribute('alt', options.alt);
+	}
     return element;
 }

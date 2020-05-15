@@ -37,6 +37,7 @@ function createTable(data) {
             class: 'pokemon-sprite',
             data_src: true,
             parent: pokemon,
+            alt: result.name,
         });
 
         createElement({
@@ -85,6 +86,9 @@ function createElement(options) {
     }
     if (options.src) {
         element.src = options.src;
+    }
+    if (options.alt) {
+        element.setAttribute('alt', options.alt);
     }
     return element;
 }
