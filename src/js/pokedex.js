@@ -416,14 +416,23 @@ function getLevelUpConditions(path) {
 			parent: evolutionMethodFragment,
 		});
 	}
-	// Having Attack-Type + Affection
+	// Having Attack-Type
 	else if (path.evolution_details[0].known_move_type !== null) {
 		createElement({
 			type: 'p',
 			class: 'evolve-method-text',
-			text: 'Level up with level ' + path.evolution_details[0].min_affection + ' affection and a ' + path.evolution_details[0].known_move_type.name + '-type move',
+			text: 'Level up with level ' + path.evolution_details[0].min_affection + ' affection ',
 			parent: evolutionMethodFragment,
 		});
+		// Having Attack-Type + Affection
+		if (path.evolution_details[0].known_move_type !== null) {
+			createElement({
+				type: 'p',
+				class: 'evolve-method-text',
+				text:  'and a ' + path.evolution_details[0].known_move_type.name + '-type move',
+				parent: evolutionMethodFragment,
+			});
+		}
 	}
 	// Beauty
 	else if (path.evolves_to[0].evolution_details[0].min_beauty !== null) {
