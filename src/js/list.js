@@ -117,7 +117,7 @@ function addLinks() {
     pokemonNames = document.querySelectorAll('.pokemon-name');
     pokemonNames.forEach(pokemonName => {
         pokemonName.addEventListener('click', () => {
-            localStorage.setItem('pokemonId', pokemonName.textContent);
+            localStorage.setItem('pokemonId', pokemonName.parentNode.id);
         });
     })
 }
