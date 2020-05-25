@@ -1,1 +1,1 @@
-# Projet JS - Nicolas JESENBERGER G2A W1
+# PokéFinder - Nicolas JESENBERGER
