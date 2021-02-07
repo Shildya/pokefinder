@@ -30,6 +30,12 @@
     color: black;
 }
 
+.pokemon-sprite {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
 body.dark-mode {
 
     .pokemon-id {
